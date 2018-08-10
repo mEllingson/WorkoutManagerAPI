@@ -46,8 +46,8 @@ namespace WorkoutManagerAPI.DAL
                 exercise = x.Exercise.Name,
                 exerciseType = x.Exercise.ExerciseType.Name,
                 reps = x.Repetitions,
-                useTM = x.WeightBasedOnTrainingMax,
-                tmPercent = x.WeightPercentageOfTrainingMax,
+                useTM = x.WeightBasedOnTrainingMax ?? false,
+                tmPercent = x.WeightPercentageOfTrainingMax ?? 0.0,
                 amrapSet = x.AMRAPSet,
                 warmupSet = x.WarmupSet
             }).ToList();
