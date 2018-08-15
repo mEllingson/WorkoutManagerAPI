@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Http.Description;
 using WorkoutManagerAPI.DAL;
-using WorkoutManagerAPI.Models;
 
 namespace WorkoutManagerAPI.Controllers
 {
@@ -28,21 +19,19 @@ namespace WorkoutManagerAPI.Controllers
             this.service = service;
         }
 
-        public Object GetPrograms()
+        public async Task<object> GetPrograms()
         {
-            return new { Programs = service.GetPrograms() };
+            return new { Programs = await this.service.GetPrograms() };
         }
 
-        public Object GetProgramDays(int id)
+        public async Task<object> GetProgramDays(int id)
         {
-
-            return new { ProgramDays = service.GetWorkoutDays(id) };
+            return new { ProgramDays = await this.service.GetWorkoutDays(id) };
         }
 
-        public Object GetProgramDaySets(int id)
+        public async Task<object> GetProgramDaySets(int id)
         {
-            return new { ProgramDaySets = service.GetWorkoutSets(id) };
-        }
-     
+            return new { ProgramDaySets = await this.service.GetWorkoutSets(id) };
+        }     
     }
 }
